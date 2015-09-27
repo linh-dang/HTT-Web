@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<% posts = @user.microposts.all %>
+<% if posts.size > 0  %>
+<strong>Micropost: <span style="color:red;"; ><%=posts.size%></span></strong>
+<ul>
+<% i= 1%>
+<% posts.each do |post| %>
+<li><%=i%>) <%= link_to post.content, post  %></li>
+<%i = i+1%>
+ <% end %>
+</ul>
+<% end %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
