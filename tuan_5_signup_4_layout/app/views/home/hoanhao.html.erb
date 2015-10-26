@@ -1,0 +1,14 @@
+<h1>Home#hoanhao</h1>
+<p>Find me in app/views/home/hoanhao.html.erb</p>
+<p>Số hoàn hảo</p>
+<%for n in 1..10000 %>
+    <%sum = 0%>
+    <%for i in 1...n%>
+        <%if n % i == 0%>
+            <%sum += i%>
+       <% end%>
+    <%end%>
+    <%if sum == n%>
+    	<p><%= n%></p>
+    <%end%>
+<%end%>
