@@ -1,0 +1,40 @@
+<% provide(:title, 'All users') %>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+<%= will_paginate %>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%">Name</th>
+      <th style="width: 30%">Gravatar</th>
+      <th >Email</th>
+      <th style="width: 10%">&nbsp</th>
+      <th style="width: 10%"></th>
+      <th style="width: 8%"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        
+        <td><%= gravatar_for user %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td> <% if current_user.admin? && !current_user?(user) %>
+    		|<%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+  				<% end %>
+  		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate %>
+<br>
+
+<%= link_to 'New User', new_user_path %>
+
+
